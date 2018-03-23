@@ -51,8 +51,8 @@ public class Menu {
   System.out.println("1.Change name");
   System.out.println("2.Change age");
   System.out.println("3.Change gender");
-  System.out.println("4.Change mobile");
-  System.out.println("5.Change address");
+  System.out.println("4.Change pic");
+  System.out.println("5.Change status");
   System.out.println("6.Return to the previous menu");
   System.out.println("===================================");
  }

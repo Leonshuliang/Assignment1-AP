@@ -26,30 +26,7 @@ public class OptionNoRegex {
   }
  
  }
-// //verify friendID
-// public String friendIDRegex(String friendID)
-// {
-//  String regex="[1-4]{1}";
-//  Scanner sc=new Scanner(System.in);
-//  while(true)
-//  {
-//   String input=sc.nextLine();
-//   if(input.matches(regex))
-//   {
-//    int key=Integer.parseInt(input);
-//   
-//     return key;
-//    }else
-//    {
-//     System.out.println("Please input a number between 1-4 as friendID!");
-//    }
-//   }else
-//   {
-//    System.out.println("Please input a number!");
-//   }
-//  }
- 
-// }
+
  //verify name
  @SuppressWarnings("resource")
  public String nameRegex(String name){

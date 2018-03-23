@@ -175,25 +175,7 @@ public class Driver{
  }
  
  
-// //判断序号是否已经存在插入成功失败
-//   @SuppressWarnings("resource")
-//   public String judgeId(String id){
-//    Scanner sc=new Scanner(System.in);
-//    Iterator<Person> it=list.iterator();
-//    String newId=id;
-//    while(it.hasNext()){
-//     Person p=(Person)it.next();
-//     if(newId.equals(p.getId())){
-//      System.out.println("此序号已经存在,请重新输入序号");
-//      newId=sc.nextLine();
-//      continue;
-//     }else{
-//      return newId;
-//     }
-//    }
-//    return id;
-//   }
- 
+
  //List all the information of all people 
  public void showAll(){
   System.out.println("ID\n"+"Name\n"+"Age\n"+"Gender\n"+"Pic\n"+"Status");
@@ -203,19 +185,7 @@ public class Driver{
    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
   }
  }
-// public void showAll(){
-//	 // System.out.println("ID\n"+"Name\n"+"Age\n"+"Gender\n"+"Pic\n"+"Status");
-//	  Iterator<Person> it=list.iterator();
-//	  if(it.hasNext())
-//	  {
-//	   Person p=(Person)it.next();
-//	   System.out.println("ID"+p.getId()+"\n"+"Name"+p.getName()+"\nAge"+p.getAge()+"Gender\n"+p.getGender()+"\nPic"+p.getPic()+"\nStatus"+p.getStatus());
-//	  }
-//	  else {
-//		  System.out.println("ID\n"+"Name\n"+"Age\n"+"Gender\n"+"Pic\n"+"Status");
-//	  }
-//	  
-//	 }
+
  //Search people by name
  @SuppressWarnings("resource")
  public void searchByName(){
@@ -264,24 +234,8 @@ public class Driver{
    }
   }
  }
-// //按电话号码查询用户信息
-// @SuppressWarnings("resource")
-// public void searchByTelNum(){
-//  TelNoteRegex reg=new TelNoteRegex();
-//  System.out.println("输入你要查询的电话号码:");
-//  Scanner sc=new Scanner(System.in);
-//  String telNum=sc.nextLine();
-//  telNum=reg.telNumRegex(telNum);
-//  Iterator<Person> it=list.iterator();
-//  while(it.hasNext()){
-//   Person p=(Person)it.next();
-//   if(telNum.equals(p.getPic())){
-//    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
-//   }
-//  }
-// }
- //search a person by his/her status
 
+ //search a person by his/her status
  public void searchByAdd(){
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter the status you need to search:");
@@ -326,7 +280,7 @@ public class Driver{
   System.out.println("Enter an option:");
   Scanner sc=new Scanner(System.in);
   String num=sc.nextLine();
-  int id=Integer.parseInt(num);
+  int id=Integer.parseInt(num);//cast string num to int id
   System.out.println("Enter the age of the person you are searching:");
   String age=sc.nextLine();
   age=reg.ageRegex(age);
@@ -341,7 +295,7 @@ public class Driver{
    }
   }
  }
- //修改性别信息
+ //change gender information
  @SuppressWarnings("resource")
  public void sexModify(){
   OptionNoRegex reg=new OptionNoRegex();
@@ -434,7 +388,6 @@ public class Driver{
  public void checkFriends(){
 	 int id1 = 0,id2 = 0;
 	 int age1 = 0,age2 = 0;
-	 Relation relation=new Relation();
 	 OptionNoRegex reg=new OptionNoRegex();
 	  System.out.println("Enter the first name:");
 	  Scanner sc1=new Scanner(System.in);
@@ -452,8 +405,7 @@ public class Driver{
 	   {
 		   id1=p.getId();
 		   age1=Integer.parseInt(p.getAge());
-		   // System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
-	   }
+		  }
 	  if(name2.equals(p.getName()))
 	   {
 		   id2=p.getId();
@@ -462,9 +414,45 @@ public class Driver{
 	   else {
 		   System.out.println("plese check the names, and try later ");
 	   }
-	   relation.checkFiends(id1, id2, age1, age2);
+	   checkFiends(id1, id2, age1, age2);
 	  }
 	  System.out.println("plese check the names, and try later ");
 	 }
-
+ public void checkFiends(int personID1,int personID2,int personAge1,int personAge2)
+	{
+		int id1=personID1;
+	    int id2=personID2;
+	    int age1=personAge1;
+	    int age2=personAge2;
+	    if(age1<=16 && age1 >16 && id1==id2)
+	    {
+	        	System.out.println("person1 is dependent of person2");
+	    }
+	    else if(age1>=16 && age2<16 && id1==id2)
+		 {
+			 System.out.println("person2 is dependent of person1");
+		 }
+	    else if(age1>16 && age2 >16 && id1==id2)
+	    {
+	         System.out.println("person1 and person2 are friends");
+	    }
+	    else if (age1<=16 && age2<=16 && age1-age2 <=3 && id1==id2)
+	    {
+	    		System.out.println("person1 and person2 are all independs, they are  friends");
+	    }
+	    else if (age1<=16 && age2<=16 && age1-age2 >3)
+	    {
+	    	    if(age1 <= 2)
+	    	    {
+	    	    	System.out.println("person1's age lower than 3,so she/he has no friend");
+	    	    }
+	    	    if(age2 <= 2){
+	    	    	System.out.println("person1 and person2 are all independs, they are not friends");
+	    	    	}
+	    	    else {
+	    	    	System.out.println("person1 and person2 are all independs, they are not friends");
+	    	    }
+	    }
+	}
+	
 }
