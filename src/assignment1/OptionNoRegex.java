@@ -5,7 +5,7 @@ public class OptionNoRegex {
 
  public int menuRegex(int min,int max)
  {
-  String regex="[0-9]{1}";
+  String regex="[0-9]{1}";//menu is only one-digit between 1-9
   Scanner sc=new Scanner(System.in);
   while(true)
   {
@@ -53,7 +53,7 @@ public class OptionNoRegex {
  //verify name
  @SuppressWarnings("resource")
  public String nameRegex(String name){
-  String pattern ="[A-Za-z]+";
+  String pattern ="[A-Za-z]+";//all letters include capital A_Z and lower a-z
   String str=name;
   Scanner sc=new Scanner(System.in);
   while(true){
@@ -69,7 +69,7 @@ public class OptionNoRegex {
  //verify age
  
  public String ageRegex(String age){
-  String pattern ="^([0-9]|[0-9]{2}|100)$";
+  String pattern ="^([0-9]|[0-9]{2}|100)$";//only between 0-99 is valid
   String str=age;
   Scanner sc=new Scanner(System.in);
   while(true){
@@ -83,9 +83,8 @@ public class OptionNoRegex {
   }
  }
  //verify of gender 
- @SuppressWarnings("resource")
  public String sexRegex(String sex){
-  String pattern ="[FM]";
+  String pattern ="[FM]";//F is female  M is male
   String str=sex;
   Scanner sc=new Scanner(System.in);
   while(true){
@@ -98,37 +97,4 @@ public class OptionNoRegex {
    }
   }
  }
-// //用户输入电话号码的验证
-// @SuppressWarnings("resource")
-// public String telNumRegex(String telNum){
-//  String pattern ="[0-9]{11}";
-//  String str=telNum;
-//  Scanner sc=new Scanner(System.in);
-//  while(true){
-//   if(str.matches(pattern)){
-//    return str;
-//   }else{
-//    System.out.println("输入不合法字符,请重新输入11位的手机号码");
-//    str=sc.nextLine();
-//    continue;
-//   }
-//  }
-// }
- //用户输入地址的验证
- //@SuppressWarnings("resource")
-// public String addressRegex(String address)
-// {
-//  String pattern ="[a-zA-Z[0-9]]{1,15}";
-//  String str=address;
-//  Scanner sc=new Scanner(System.in);
-//  while(true){
-//   if(str.matches(pattern)){
-//    return str;
-//   }else{
-//    System.out.println("输入不合法字符,请重新输入1到15个英文大小写或是数字");
-//    str=sc.nextLine();
-//    continue;
-//   }
-//  }
-// }
 }
