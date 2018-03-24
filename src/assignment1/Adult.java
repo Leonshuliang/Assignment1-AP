@@ -1,21 +1,20 @@
 package assignment1;
 public class Adult implements Person {
  private int id;//id of the people in this social network
- private String friendID;//
  private String name;//name of the people in this social network
  private String age;//age of the people in this social network
  private String gender;//gender of the people in this social network
  private String pic;//picture on profile
  private String status;//status of person, like work 
- 
- public Adult(int id,String name,String age,String gender,String telNum,String status){
+ private String friends;//friends of person
+ public Adult(int id,String name,String age,String gender,String pic,String status,String friends){
   this.id=id;
-  this.friendID=friendID;
   this.name=name;
   this.age=age;
   this.gender=gender;
   this.pic=pic;
   this.status=status;
+  this.friends=friends;
  }
  //
  public int getId() {
@@ -55,5 +54,11 @@ public class Adult implements Person {
  public void setStatus(String status) {
   this.status = status;
  }
+ public String getFriends() {
+	  return friends;
+ }
+	 public void setFriends(String status) {
+	  this.friends = friends;
+	 }
  
 }

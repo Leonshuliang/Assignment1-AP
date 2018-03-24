@@ -7,6 +7,7 @@ public class MiniNet {
   OptionNoRegex reg=new OptionNoRegex();
   while(true){
    m.mainMenu();
+   o.putPersons();
    int key=reg.menuRegex(1, 6);
    switch(key){
    case 1:

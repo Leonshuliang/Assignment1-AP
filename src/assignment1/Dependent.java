@@ -1,7 +1,6 @@
 package assignment1;
 public class Dependent implements Person {
  private int id;//id of the people in this social network
- private String friendID;//
  private String name;//name of the people in this social network
  private String age;//age of the people in this social network
  private String gender;//gender of the people in this social network
@@ -9,9 +8,9 @@ public class Dependent implements Person {
  private String status;//status of person, like work 
  private String parents;//children's parents
  
- public Dependent(int id,String name,String age,String gender,String telNum,String status,String parents){
+ public Dependent(int id,String name,String age,String gender,String pic,String status,String parents){
   this.id=id;
-  this.friendID=friendID;
+  this.id=id;
   this.name=name;
   this.age=age;
   this.gender=gender;

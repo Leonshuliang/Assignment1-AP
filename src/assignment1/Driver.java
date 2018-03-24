@@ -7,22 +7,39 @@ import java.util.Scanner;
  
 public class Driver{
 	
- private List<Adult> list=new ArrayList<Adult>();
- //put some persons in list
+ private List<Adult> listAdult=new ArrayList<Adult>();
+ private List<Teenager> listTeenager=new ArrayList<Teenager>();
+ private List<Baby> listBaby=new ArrayList<Baby>();
+ //put some persons in listAdult
  public void putPersons()
  {
-//	 Adult p1=new Adult(1, Nick, null, null, null, null);
-//	 Adult p2=new Adult(1, null, null, null, null, null);
-//	 Adult p3=new Adult(0, null, null, null, null, null);
-//	 Adult p4=new Adult(0, null, null, null, null, null);
-//	 Adult p5=new Adult(0, null, null, null, null, null);
-//	 Adult p1=new Adult(0, null, null, null, null, null);
-//	 Adult p1=new Adult(0, null, null, null, null, null);
-//	 Adult p1=new Adult(0, null, null, null, null, null);
+	 Adult p1=new Adult(1, "Tom", "30", "M", "tom.pic", "doctor","Lily,Alice");
+	 Adult p2=new Adult(1, "Lily", "30", "F", "lily.pic", "engineer","Tom,Alice");
+	 Adult p3=new Adult(2, "Jack", "40", "M", "jack.pic", "chef","Vivi");
+	 Adult p4=new Adult(2, "Vivi","40", "F", "vivi.pic", "looking job","Jack");
+	 Adult p5=new Adult(3, "John", "45", "M", "john.pic", "CEO","Jessy");
+	 Adult p6=new Adult(3, "Jessy", "45", "F", "jessy.pic", "cafe","John");
+	 Adult p7=new Adult(1, "Alice", "35", "F", "alice.pic", "Teacher","Tom,Lily");
+	 Teenager p8=new Teenager(1, "Sam", "14", "M", "sam.pic", "school","Tom,Lily");
+	 Teenager p9=new Teenager(2, "Alay", "15", "F","alsy.pic", "school", "Jack,Vivi");
+	 Baby p10=new Baby(3, "Ellen", "1", "F", "ellen.pic", "home", "John,Jessy");
+	 
+	 listAdult.add(p1);
+	 listAdult.add(p2);
+	 listAdult.add(p3);
+	 listAdult.add(p4);
+	 listAdult.add(p5);
+	 listAdult.add(p6);
+	 listAdult.add(p7);
+	 listTeenager.add(p8);
+	 listTeenager.add(p9);
+	 listBaby.add(p10);
+	 
+	 
  }
  //add a person
  public void addPerson(){
-  Menu m=new Menu();
+  Menu m=new Menu();//instance of menu
   OptionNoRegex reg=new OptionNoRegex();
   while(true){
    m.addMenu();
@@ -42,7 +59,7 @@ public class Driver{
  
  //Search a person by information
  public void searchLogic(){
-  Menu m=new Menu();
+  Menu m=new Menu();//instance of menu
   OptionNoRegex reg=new OptionNoRegex();
   while(true){
    m.searchMenu();
@@ -55,13 +72,13 @@ public class Driver{
     searchByAge();
     break;
    case 3:
-    searchBySex();
+    searchByGender();
     break;
    case 4:
-    searchByAdd();
+    searchByStatus();
     break;
    case 5:
-    showAll();
+    showAll();//show all the people
     break;
    case 6:
     return;
@@ -89,10 +106,10 @@ public class Driver{
  }
  //modify sub operation
  public void modifyLogicLogic1(){
-  Menu m=new Menu();
+  Menu m=new Menu();//instance of menu
   OptionNoRegex reg=new OptionNoRegex();
   while(true){
-   m.subModifyMenu();
+   m.subModifyMenu();//show sub menu of modify ledge
    int key=reg.menuRegex(1, 6);
    switch(key){
    case 1:
@@ -102,7 +119,7 @@ public class Driver{
     ageModify();
     break;
    case 3:
-    sexModify();
+    genderModify();
     break;
    case 4:
     picModify();
@@ -147,9 +164,6 @@ public class Driver{
    System.out.println("Enter the person's ID:");
    String id=sc.nextLine();
    id=Integer.toString(reg.menuRegex(1, 4));//1,2,3,4 is a symbol of friends
-   //System.out.println("Enter the person's FriendID:");
-  // String friendID=sc.nextLine();
-   //friendID=reg.friendIDRegex(friendID);
    System.out.println("Enter the person's Name:");
    String name=sc.nextLine();
    name=reg.nameRegex(name);
@@ -157,17 +171,17 @@ public class Driver{
    String age=sc.nextLine();
    age=reg.ageRegex(age);
    System.out.println("Enger the person's Gender:");
-   String sex=sc.nextLine();
-   sex=reg.sexRegex(sex);
+   String gender=sc.nextLine();
+   gender=reg.sexRegex(gender);
    System.out.println("Uplode the person's Pic :");
-   String telNum=sc.nextLine();
-   //telNum=reg.telNumRegex(telNum);
+   String pic=sc.nextLine();
    System.out.println("Enter the person's Status:");
-   String address=sc.nextLine();
-   //address=reg.addressRegex(address);
+   String status=sc.nextLine();
+   System.out.println("Enter the person's Friends:");
+   String friends=sc.nextLine();
    int personId=Integer.parseInt(id);
-   Adult p=new Adult(personId,name,age,sex,telNum,address);
-   list.add(p);
+   Adult p=new Adult(personId,name,age,gender,pic,status,friends);
+   listAdult.add(p);
  }
  catch (Exception e) {
 	 System.out.println("Add a person faild, Please try again");
@@ -178,11 +192,12 @@ public class Driver{
 
  //List all the information of all people 
  public void showAll(){
-  System.out.println("ID\n"+"Name\n"+"Age\n"+"Gender\n"+"Pic\n"+"Status");
-  Iterator<Adult> it=list.iterator();
+  System.out.println("ID\t\t"+"Name\t\t"+"Age\t\t"+"Gender\t\t"+"Pic\t\t"+"Status\t\t"+"Friends"+"\n");
+  
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
-   System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+   System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
   }
  }
 
@@ -194,11 +209,11 @@ public class Driver{
   Scanner sc=new Scanner(System.in);
   String name=sc.nextLine();
   name=reg.nameRegex(name);
-  Iterator<Adult> it=list.iterator();
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(name.equals(p.getName())){
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }
   }
  }
@@ -210,43 +225,42 @@ public class Driver{
   Scanner sc=new Scanner(System.in);
   String age=sc.nextLine();
   age=reg.ageRegex(age);
-  Iterator<Adult> it=list.iterator();
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(age.equals(p.getAge())){
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }
   }
  }
  //Search people by gender
- 
- public void searchBySex(){
+ public void searchByGender(){
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter the gender you want to search:");
   Scanner sc=new Scanner(System.in);
-  String sex=sc.nextLine();
-  sex=reg.sexRegex(sex);
-  Iterator<Adult> it=list.iterator();
+  String gender=sc.nextLine();
+  gender=reg.sexRegex(gender);
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
-   if(sex.equals(p.getGender())){
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+   if(gender.equals(p.getGender())){
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }
   }
  }
 
  //search a person by his/her status
- public void searchByAdd(){
+ public void searchByStatus(){
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter the status you need to search:");
   Scanner sc=new Scanner(System.in);
   String address=sc.nextLine();
  // address=reg.addressRegex(address);
-  Iterator<Adult> it=list.iterator();
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(address.equals(p.getStatus())){
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }
   }
  }
@@ -261,12 +275,12 @@ public class Driver{
   System.out.println("Enter the name you want to modify:");
   String name=sc.nextLine();
   name=reg.nameRegex(name);
-  Iterator<Adult> it=list.iterator();
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
     p.setName(name);
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }else{
     System.out.println(" Failed to modify!");
    }
@@ -284,12 +298,12 @@ public class Driver{
   System.out.println("Enter the age of the person you are searching:");
   String age=sc.nextLine();
   age=reg.ageRegex(age);
-  Iterator<Adult> it=list.iterator();
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
     p.setAge(age);
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }else{
     System.out.println("Modify Failed,Please try again!");
    }
@@ -297,21 +311,21 @@ public class Driver{
  }
  //change gender information
  @SuppressWarnings("resource")
- public void sexModify(){
+ public void genderModify(){
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter an option:");
   Scanner sc=new Scanner(System.in);
   String num=sc.nextLine();
   int id=Integer.parseInt(num);//cast string num to int id;
   System.out.println("Enter the gender you want to change:");
-  String sex=sc.nextLine();
-  sex=reg.sexRegex(sex);
-  Iterator<Adult> it=list.iterator();
+  String gender=sc.nextLine();
+  gender=reg.sexRegex(gender);
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
-    p.setGender(sex);
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+    p.setGender(gender);
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }else{
     System.out.println("Modify Failed,Please try again!");
    }
@@ -326,12 +340,12 @@ public class Driver{
   int id=Integer.parseInt(num);
   System.out.println("Please uplode the picture you want to upload:");
   String pic=sc.nextLine();
-  Iterator<Adult> it=list.iterator();
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
     p.setPic(pic);
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }else{
     System.out.println("Modify Failed,Please try again!");
    }
@@ -348,12 +362,12 @@ public class Driver{
   System.out.println("Please enter the status you want to change:");
   String status=sc.nextLine();
   //address=reg.addressRegex(address);
-  Iterator<Adult> it=list.iterator();
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
     p.setStatus(status);
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus());
+    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
    }else{
     System.out.println("Modify Failed,Please try again!");
    }
@@ -365,12 +379,12 @@ public class Driver{
   System.out.println("Enter the name of the person you want to delete：");
   Scanner sc=new Scanner(System.in);
   String num=sc.nextLine();
-  Iterator<Adult> it=list.iterator();
+  Iterator<Adult> it=listAdult.iterator();
   while(it.hasNext())
   {
    Adult p=(Adult)it.next();
     if(num==p.getName()){
-     list.remove(num);
+     listAdult.remove(num);
      System.out.println("DeleteSuccess");
     }else{
      System.out.println("Deleted Failed");
@@ -381,7 +395,7 @@ public class Driver{
  }
  //Delete all the information of all the people
  public void deleteAll(){
-  list.clear();
+  listAdult.clear();
   System.out.println("DeleteSuccess");
  }
  //check two people given are friends or not 
@@ -397,7 +411,7 @@ public class Driver{
 	  Scanner sc2=new Scanner(System.in);
 	  String name2=sc2.nextLine();
 	  name2=reg.nameRegex(name2);
-	  Iterator<Adult> it=list.iterator();
+	  Iterator<Adult> it=listAdult.iterator();
 	  while(it.hasNext())
 	  {
 	   Adult p=(Adult)it.next();
@@ -411,12 +425,9 @@ public class Driver{
 		   id2=p.getId();
 		   age2=Integer.parseInt(p.getAge());
 	   }
-	   else {
-		   System.out.println("plese check the names, and try later ");
-	   }
-	   checkFiends(id1, id2, age1, age2);
 	  }
-	  System.out.println("plese check the names, and try later ");
+	  checkFiends(id1, id2, age1, age2);
+	  
 	 }
  public void checkFiends(int personID1,int personID2,int personAge1,int personAge2)
 	{
@@ -452,6 +463,9 @@ public class Driver{
 	    	    else {
 	    	    	System.out.println("person1 and person2 are all independs, they are not friends");
 	    	    }
+	    }
+	    else {
+	    	System.out.println("person1 and person2 are not friends");
 	    }
 	}
 	
