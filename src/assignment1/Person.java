@@ -1,5 +1,8 @@
 package assignment1;
-
+/**
+ * person is interface adult and dependent inherit Person
+ * 
+ * */
  interface Person {
 	public int getId();
     public void setId(int id);

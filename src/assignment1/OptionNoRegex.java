@@ -1,4 +1,11 @@
 package assignment1;
+/**
+* OptionNoRegex is only for all the ergodic process 
+* of option number in this project 
+* @author  Shuliang Xin 3647666
+* @version 1.0
+* @since   2018-03-20 
+*/
 import java.util.Scanner;
 public class OptionNoRegex {
  //verify the option number 

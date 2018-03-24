@@ -1,10 +1,17 @@
 package assignment1;
- 
+/**
+* driver class is going to creat arraylist for adult teenager and baby class
+* include most methods will be used in this project 
+*
+* @author  Shuliang Xin 3647666
+* @version 1.0
+* @since   2018-03-22
+*/
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
- 
+
 public class Driver{
 	
  private List<Adult> listAdult=new ArrayList<Adult>();
@@ -13,6 +20,9 @@ public class Driver{
  //put some persons in listAdult
  public void putPersons()
  {
+	 /** 
+	  * p1- p7 is instance of adult storage in listAdult 
+	  */
 	 Adult p1=new Adult(1, "Tom", "30", "M", "tom.pic", "doctor","Lily,Alice");
 	 Adult p2=new Adult(1, "Lily", "30", "F", "lily.pic", "engineer","Tom,Alice");
 	 Adult p3=new Adult(2, "Jack", "40", "M", "jack.pic", "chef","Vivi");
@@ -20,8 +30,14 @@ public class Driver{
 	 Adult p5=new Adult(3, "John", "45", "M", "john.pic", "CEO","Jessy");
 	 Adult p6=new Adult(3, "Jessy", "45", "F", "jessy.pic", "cafe","John");
 	 Adult p7=new Adult(1, "Alice", "35", "F", "alice.pic", "Teacher","Tom,Lily");
+	 /** 
+	  * p8- p9 is instance of teenager storage in listTeenager
+	  */
 	 Teenager p8=new Teenager(1, "Sam", "14", "M", "sam.pic", "school","Tom,Lily");
 	 Teenager p9=new Teenager(2, "Alay", "15", "F","alsy.pic", "school", "Jack,Vivi");
+	 /** 
+	  * p10 is instance of baby storage in listBaby
+	  */
 	 Baby p10=new Baby(3, "Ellen", "1", "F", "ellen.pic", "home", "John,Jessy");
 	 
 	 listAdult.add(p1);
@@ -194,7 +210,7 @@ public class Driver{
  public void showAll(){
   System.out.println("ID\t\t"+"Name\t\t"+"Age\t\t"+"Gender\t\t"+"Pic\t\t"+"Status\t\t"+"Friends"+"\n");
   
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
@@ -209,8 +225,8 @@ public class Driver{
   Scanner sc=new Scanner(System.in);
   String name=sc.nextLine();
   name=reg.nameRegex(name);
-  Iterator<Adult> it=listAdult.iterator();
-  while(it.hasNext()){
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
+  while(it.hasNext()){  
    Adult p=(Adult)it.next();
    if(name.equals(p.getName())){
     System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
@@ -225,7 +241,7 @@ public class Driver{
   Scanner sc=new Scanner(System.in);
   String age=sc.nextLine();
   age=reg.ageRegex(age);
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(age.equals(p.getAge())){
@@ -240,7 +256,7 @@ public class Driver{
   Scanner sc=new Scanner(System.in);
   String gender=sc.nextLine();
   gender=reg.sexRegex(gender);
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(gender.equals(p.getGender())){
@@ -256,7 +272,7 @@ public class Driver{
   Scanner sc=new Scanner(System.in);
   String address=sc.nextLine();
  // address=reg.addressRegex(address);
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(address.equals(p.getStatus())){
@@ -275,7 +291,7 @@ public class Driver{
   System.out.println("Enter the name you want to modify:");
   String name=sc.nextLine();
   name=reg.nameRegex(name);
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
@@ -298,7 +314,7 @@ public class Driver{
   System.out.println("Enter the age of the person you are searching:");
   String age=sc.nextLine();
   age=reg.ageRegex(age);
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
@@ -320,7 +336,7 @@ public class Driver{
   System.out.println("Enter the gender you want to change:");
   String gender=sc.nextLine();
   gender=reg.sexRegex(gender);
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
@@ -340,7 +356,7 @@ public class Driver{
   int id=Integer.parseInt(num);
   System.out.println("Please uplode the picture you want to upload:");
   String pic=sc.nextLine();
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
@@ -362,7 +378,7 @@ public class Driver{
   System.out.println("Please enter the status you want to change:");
   String status=sc.nextLine();
   //address=reg.addressRegex(address);
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
    if(id==p.getId()){
@@ -379,7 +395,7 @@ public class Driver{
   System.out.println("Enter the name of the person you want to delete：");
   Scanner sc=new Scanner(System.in);
   String num=sc.nextLine();
-  Iterator<Adult> it=listAdult.iterator();
+  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext())
   {
    Adult p=(Adult)it.next();
@@ -411,7 +427,7 @@ public class Driver{
 	  Scanner sc2=new Scanner(System.in);
 	  String name2=sc2.nextLine();
 	  name2=reg.nameRegex(name2);
-	  Iterator<Adult> it=listAdult.iterator();
+	  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
 	  while(it.hasNext())
 	  {
 	   Adult p=(Adult)it.next();

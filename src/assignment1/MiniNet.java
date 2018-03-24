@@ -1,4 +1,11 @@
 package assignment1;
+/**
+* mininet is start class   call menu driver and optioNoRege
+*
+* @author  Shuliang Xi3647666
+* @version 1.0
+* @since   2018-03-20 
+*/
 public class MiniNet {
  public static void main(String[] args) 
  {

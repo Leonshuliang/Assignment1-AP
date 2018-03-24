@@ -1,4 +1,11 @@
 package assignment1;
+/**
+* menu storage all the numeric option in this project 
+*
+* @author  Yongqi Zhong 3691039
+* @version 1.0
+* @since   2018-03-20 
+*/
 public class Menu {
  //MainMenu
  public void mainMenu() {
