@@ -426,10 +426,10 @@ public class Driver{
 		   age2=Integer.parseInt(p.getAge());
 	   }
 	  }
-	  checkFiends(id1, id2, age1, age2);
+	  findFriendsByID(id1, id2, age1, age2);
 	  
 	 }
- public void checkFiends(int personID1,int personID2,int personAge1,int personAge2)
+ public void findFriendsByID(int personID1,int personID2,int personAge1,int personAge2)
 	{
 		int id1=personID1;
 	    int id2=personID2;
