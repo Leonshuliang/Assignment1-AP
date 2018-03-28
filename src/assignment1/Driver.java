@@ -197,7 +197,7 @@ public class Driver{
    String pic=sc.nextLine();
    System.out.println("Enter the person's Status:");
    String status=sc.nextLine();
-   System.out.println("Enter the person's Friends:");
+   System.out.println("Enter the person's Friends:");//only adult and teenager have friends attribute
    String friends=sc.nextLine();
    int personId=Integer.parseInt(id);
    Adult p=new Adult(personId,name,age,gender,pic,status,friends);
@@ -303,7 +303,7 @@ public class Driver{
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter an option:");
   Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine();
+  String num=sc.nextLine(); // num is the menu option
   int id=Integer.parseInt(num);
   System.out.println("Enter the name you want to modify:");
   String name=sc.nextLine();
@@ -326,7 +326,7 @@ public class Driver{
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter an option:");
   Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine();
+  String num=sc.nextLine();// num is the menu option
   int id=Integer.parseInt(num);//cast string num to int id
   System.out.println("Enter the age of the person you are searching:");
   String age=sc.nextLine();
@@ -348,7 +348,7 @@ public class Driver{
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter an option:");
   Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine();
+  String num=sc.nextLine();//num is the menu option
   int id=Integer.parseInt(num);//cast string num to int id;
   System.out.println("Enter the gender you want to change:");
   String gender=sc.nextLine();
@@ -369,8 +369,8 @@ public class Driver{
  public void picModify(){
   System.out.println("Enter an option:");
   Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine();
-  int id=Integer.parseInt(num);
+  String num=sc.nextLine();//num is the menu option
+  int id=Integer.parseInt(num);//num is the menu option
   System.out.println("Please uplode the picture you want to upload:");
   String pic=sc.nextLine();
   Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
@@ -390,7 +390,7 @@ public class Driver{
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter an option:");
   Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine();
+  String num=sc.nextLine(); //num is the menu option
   int id=Integer.parseInt(num);//cast string to integer
   System.out.println("Please enter the status you want to change:");
   String status=sc.nextLine();
@@ -411,7 +411,7 @@ public class Driver{
  public void deleteByName(){
   System.out.println("Enter the name of the person you want to delete：");
   Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine();
+  String num=sc.nextLine(); //num is the menu option
   Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext())
   {
@@ -426,9 +426,13 @@ public class Driver{
   System.out.println("There is no any person");
  
  }
- //Delete all the information of all the people
+ /*
+  * delete all people is cleaning all the instance stored in list
+  * */
  public void deleteAll(){
   listAdult.clear();
+  listTeenager.clear();
+  listBaby.clear();
   System.out.println("DeleteSuccess");
  }
  //check two people given are friends or not 
@@ -451,15 +455,15 @@ public class Driver{
 	   if(name1.equals(p.getName()))
 	   {
 		   id1=p.getId();
-		   age1=Integer.parseInt(p.getAge());
+		   age1=Integer.parseInt(p.getAge());//casting age to int;
 		  }
 	  if(name2.equals(p.getName()))
 	   {
 		   id2=p.getId();
-		   age2=Integer.parseInt(p.getAge());
+		   age2=Integer.parseInt(p.getAge());//casting age to int
 	   }
 	  }
-	  findFriendsByID(id1, id2, age1, age2);
+	  findFriendsByID(id1, id2, age1, age2);//check 2 people are friends or not 
 	  
 	 }
  //check two people are friends or not 
@@ -520,7 +524,7 @@ public class Driver{
 	   if(n1.equals(p.getName()))
 	   {
 		    id1=p.getId();   //get first person's id
-		    p.setFriends(n2);
+		    p.setFriends(n2);//put name2 to person1's friends
 	   }
 	  }
 	  Iterator<Adult> it2=listAdult.iterator();
@@ -529,8 +533,8 @@ public class Driver{
 	   Adult p=(Adult)it2.next();
 	   if(n2.equals(p.getName()))
 	   {
-		   p.setId(id1); //
-		   p.setFriends(n1);
+		   p.setId(id1); //set person2'id same as person1
+		   p.setFriends(n1);//put name1 to person2's friends
 	   }
 	  }
 	  System.out.println("They are friends now");

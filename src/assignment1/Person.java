@@ -6,7 +6,10 @@ package assignment1;
 * @version 1.0
 * @since   2018-03-20 
 */
-
+/*
+ * person is interface , adult and dependent will implement all methods 
+ * 
+ * */
  interface Person {
 	public int getId();
     public void setId(int id);
