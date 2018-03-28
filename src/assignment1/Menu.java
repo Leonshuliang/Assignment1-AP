@@ -4,7 +4,7 @@ package assignment1;
 *
 * @author  Yongqi Zhong 3691039
 * @version 1.0
-* @since   2018-03-20 
+* @since   2018-03-22
 */
 public class Menu {
  //MainMenu
@@ -17,7 +17,8 @@ public class Menu {
   System.out.println("4. Add a person");
   System.out.println("5. Modify a person");
   System.out.println("6. Delete a person");
-  System.out.println("7. Exit");
+  System.out.println("7. Make two people as friends");
+  System.out.println("8. Exit");
   System.out.println("===================================");
   System.out.println("Enter an option: _");
  }
@@ -73,5 +74,5 @@ public class Menu {
   System.out.println("4.Return to the previous menu");
   System.out.println("===================================");
  }
- 
+
 }

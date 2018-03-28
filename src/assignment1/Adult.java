@@ -1,4 +1,12 @@
 package assignment1;
+
+/**
+* adult is over 16 has friends
+*
+* @author  Yongqi Zhong 3691039
+* @version 1.0
+* @since   2018-03-23
+*/
 public class Adult implements Person {
  private int id;//id of the people in this social network
  private String name;//name of the people in this social network
@@ -57,7 +65,7 @@ public class Adult implements Person {
  public String getFriends() {
 	  return friends;
  }
-	 public void setFriends(String status) {
+	 public void setFriends(String friends) {
 	  this.friends = friends;
 	 }
  

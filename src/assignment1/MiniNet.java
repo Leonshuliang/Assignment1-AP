@@ -4,7 +4,7 @@ package assignment1;
 *
 * @author  Shuliang Xi3647666
 * @version 1.0
-* @since   2018-03-20 
+* @since   2018-03-23 
 */
 public class MiniNet {
  public static void main(String[] args) 
@@ -12,10 +12,11 @@ public class MiniNet {
   Menu m=new Menu();
   Driver o=new Driver();
   OptionNoRegex reg=new OptionNoRegex();
+  o.putPersons();
   while(true){
    m.mainMenu();
-   o.putPersons();
-   int key=reg.menuRegex(1, 6);
+  
+   int key=reg.menuRegex(1, 8);
    switch(key){
    case 1:
 	  o.showAll();//show all the people in this social net 
@@ -30,12 +31,15 @@ public class MiniNet {
 	   o.addPerson();//add a person 
     break;
    case 5:
-	  o.modifyLogicLogic();
+	  o.modifyLogic();//edit a person by 
     break;
    case 6:
-	   o.deleteLogic();
+	   o.deleteLogic();//delete a person by attribute
 	    break;
    case 7:
+       o.makeFriends();// make 2 people as friends 
+       break;
+   case 8:
     System.exit(0);
     break;
    }

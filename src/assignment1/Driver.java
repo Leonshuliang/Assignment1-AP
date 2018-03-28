@@ -5,7 +5,7 @@ package assignment1;
 *
 * @author  Shuliang Xin 3647666
 * @version 1.0
-* @since   2018-03-22
+* @since   2018-03-23
 */
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,15 +30,17 @@ public class Driver{
 	 Adult p5=new Adult(3, "John", "45", "M", "john.pic", "CEO","Jessy");
 	 Adult p6=new Adult(3, "Jessy", "45", "F", "jessy.pic", "cafe","John");
 	 Adult p7=new Adult(1, "Alice", "35", "F", "alice.pic", "Teacher","Tom,Lily");
+	 Adult p9=new Adult(4, "Leon", "25", "M", "leon.pic", "student","no");
+	 Adult p10=new Adult(5, "Vicky", "25", "F", "vicky.pic", "student","no");
 	 /** 
 	  * p8- p9 is instance of teenager storage in listTeenager
 	  */
-	 Teenager p8=new Teenager(1, "Sam", "14", "M", "sam.pic", "school","Tom,Lily");
-	 Teenager p9=new Teenager(2, "Alay", "15", "F","alsy.pic", "school", "Jack,Vivi");
+	 Teenager p11=new Teenager(1, "Sam", "14", "M", "sam.pic", "school","Tom,Lily");
+	 Teenager p12=new Teenager(2, "Alay", "15", "F","alsy.pic", "school", "Jack,Vivi");
 	 /** 
 	  * p10 is instance of baby storage in listBaby
 	  */
-	 Baby p10=new Baby(3, "Ellen", "1", "F", "ellen.pic", "home", "John,Jessy");
+	 Baby p13=new Baby(3, "Ellen", "1", "F", "ellen.pic", "home", "John,Jessy");
 	 
 	 listAdult.add(p1);
 	 listAdult.add(p2);
@@ -47,9 +49,11 @@ public class Driver{
 	 listAdult.add(p5);
 	 listAdult.add(p6);
 	 listAdult.add(p7);
-	 listTeenager.add(p8);
-	 listTeenager.add(p9);
-	 listBaby.add(p10);
+	 listAdult.add(p9);
+	 listAdult.add(p10);
+	 listTeenager.add(p11);
+	 listTeenager.add(p12);
+	 listBaby.add(p13);
 	 
 	 
  }
@@ -77,7 +81,7 @@ public class Driver{
  public void searchLogic(){
   Menu m=new Menu();//instance of menu
   OptionNoRegex reg=new OptionNoRegex();
-  while(true){
+  
    m.searchMenu();
    int key=reg.menuRegex(1, 7);//min is 1 max is 7
    switch(key){
@@ -99,10 +103,10 @@ public class Driver{
    case 6:
     return;
    }
-  }
+  
  }
  //modify information  
- public void modifyLogicLogic(){
+ public void modifyLogic(){
   Menu m=new Menu();
   OptionNoRegex reg=new OptionNoRegex();
   while(true){
@@ -124,7 +128,7 @@ public class Driver{
  public void modifyLogicLogic1(){
   Menu m=new Menu();//instance of menu
   OptionNoRegex reg=new OptionNoRegex();
-  while(true){
+  
    m.subModifyMenu();//show sub menu of modify ledge
    int key=reg.menuRegex(1, 6);
    switch(key){
@@ -146,13 +150,13 @@ public class Driver{
    case 6:
     return;
    }
-  }
+  
  }
  //Delete an item or a person
  public void deleteLogic(){
   Menu m=new Menu();
   OptionNoRegex reg=new OptionNoRegex();
-  while(true){
+  
    m.deleteMenu();
    int key=reg.menuRegex(1, 4);
    switch(key){
@@ -168,7 +172,7 @@ public class Driver{
    case 4:
     return;
    }
-  }
+  
  }
  
  
@@ -179,7 +183,7 @@ public class Driver{
    Scanner sc=new Scanner(System.in); 
    System.out.println("Enter the person's ID:");
    String id=sc.nextLine();
-   id=Integer.toString(reg.menuRegex(1, 4));//1,2,3,4 is a symbol of friends
+   id=Integer.toString(reg.menuRegex(1, 9));//id is a symbol of friends
    System.out.println("Enter the person's Name:");
    String name=sc.nextLine();
    name=reg.nameRegex(name);
@@ -211,14 +215,27 @@ public class Driver{
   System.out.println("ID\t\t"+"Name\t\t"+"Age\t\t"+"Gender\t\t"+"Pic\t\t"+"Status\t\t"+"Friends"+"\n");
   
   Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
-  while(it.hasNext()){
+  while(it.hasNext())
+  {
    Adult p=(Adult)it.next();
    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
+  }
+  Iterator<Teenager> teenagerIt=listTeenager.iterator();//ergodic process to check every object in list
+  while(teenagerIt.hasNext())
+  {
+	  Teenager t=(Teenager)teenagerIt.next();
+   System.out.println(t.getId()+"#"+"\t\t"+t.getName()+"\t\t"+t.getAge()+"\t\t"+t.getGender()+"\t\t"+t.getPic()+"\t\t"+t.getStatus()+"\t\t");
+  }
+  Iterator <Baby> babyIt=listBaby.iterator();//ergodic process to check every object in list
+  while(babyIt.hasNext())
+  {
+	  Baby b=(Baby)babyIt.next();
+   System.out.println(b.getId()+"#"+"\t\t"+b.getName()+"\t\t"+b.getAge()+"\t\t"+b.getGender()+"\t\t"+b.getPic()+"\t\t"+b.getStatus()+"\t\t");
   }
  }
 
  //Search people by name
- @SuppressWarnings("resource")
+ 
  public void searchByName(){
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter the name you want to search:");
@@ -234,7 +251,7 @@ public class Driver{
   }
  }
  //Search people by age
- @SuppressWarnings("resource")
+ 
  public void searchByAge(){
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter the age you want to search:");
@@ -445,12 +462,13 @@ public class Driver{
 	  findFriendsByID(id1, id2, age1, age2);
 	  
 	 }
+ //check two people are friends or not 
  public void findFriendsByID(int personID1,int personID2,int personAge1,int personAge2)
 	{
-		int id1=personID1;
-	    int id2=personID2;
-	    int age1=personAge1;
-	    int age2=personAge2;
+		int id1=personID1;//id of first person;
+	    int id2=personID2;//id of second person;
+	    int age1=personAge1;//age of first person;
+	    int age2=personAge2;//age of second person;
 	    if(age1<=16 && age1 >16 && id1==id2)
 	    {
 	        	System.out.println("person1 is dependent of person2");
@@ -484,5 +502,37 @@ public class Driver{
 	    	System.out.println("person1 and person2 are not friends");
 	    }
 	}
-	
+//if two people are not friends make them as friends 
+ public void makeFriends()
+ {
+	  int id1=0;
+	  int id2=0;
+	  System.out.println("Enter the first name :");
+	  Scanner sc1=new Scanner(System.in);
+	  String n1=sc1.nextLine();
+	  System.out.println("Enter the second name :");
+	  Scanner sc2=new Scanner(System.in);
+	  String n2=sc2.nextLine();
+	  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
+	  while(it.hasNext())
+	  {  
+	   Adult p=(Adult)it.next();
+	   if(n1.equals(p.getName()))
+	   {
+		    id1=p.getId();   //get first person's id
+		    p.setFriends(n2);
+	   }
+	  }
+	  Iterator<Adult> it2=listAdult.iterator();
+	  while(it2.hasNext())
+	  {  
+	   Adult p=(Adult)it2.next();
+	   if(n2.equals(p.getName()))
+	   {
+		   p.setId(id1); //
+		   p.setFriends(n1);
+	   }
+	  }
+	  System.out.println("They are friends now");
+ }
 }

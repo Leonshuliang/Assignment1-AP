@@ -1,8 +1,12 @@
 package assignment1;
 /**
- * person is interface adult and dependent inherit Person
- * 
- * */
+* person is interface adult and dependent inherit Person
+*
+* @author  Shuliang Xin 3647666
+* @version 1.0
+* @since   2018-03-20 
+*/
+
  interface Person {
 	public int getId();
     public void setId(int id);

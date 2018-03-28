@@ -1,5 +1,12 @@
 package assignment1;
+/**
+* dependent is abstract class implements methods in class person
+* @author  Yongqi Zhong 3691039
+* @version 1.0
+* @since   2018-03-20 
+*/
 public abstract class Dependent implements Person {
+ private String id;//id of the person
  private String age;//age of the people in this social network
  private String gender;//gender of the people in this social network
  private String pic;//picture on profile
