@@ -302,20 +302,20 @@ public class Driver{
 	
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter an option:");
-  Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine(); // num is the menu option
-  int id=Integer.parseInt(num);
-  System.out.println("Enter the name you want to modify:");
-  String name=sc.nextLine();
-  name=reg.nameRegex(name);
+  Scanner sc1=new Scanner(System.in);
+  System.out.println("Enter the persons name you want to change:");
+  String name1=sc1.nextLine();
+  System.out.println("Enter a new name");
+  Scanner sc2=new Scanner(System.in);
+  String name2=sc2.nextLine();// new name of this person
+  //name=reg.nameRegex(name);
   Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext()){
    Adult p=(Adult)it.next();
-   if(id==p.getId()){
-    p.setName(name);
+   if(name1.equals(p.getName()))
+   {
+    p.setName(name2);
     System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
-   }else{
-    System.out.println(" Failed to modify!");
    }
   }
  
