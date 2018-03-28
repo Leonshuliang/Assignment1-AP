@@ -411,20 +411,17 @@ public class Driver{
  public void deleteByName(){
   System.out.println("Enter the name of the person you want to delete：");
   Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine(); //num is the menu option
+  String name=sc.nextLine(); //num is the menu option
   Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
   while(it.hasNext())
   {
    Adult p=(Adult)it.next();
-    if(num==p.getName()){
-     listAdult.remove(num);
+    if(name.equals(p.getName())){
+     listAdult.remove(p);
      System.out.println("DeleteSuccess");
-    }else{
-     System.out.println("Deleted Failed");
     }
-  }
-  System.out.println("There is no any person");
- 
+    }
+  
  }
  /*
   * delete all people is cleaning all the instance stored in list
