@@ -40,8 +40,8 @@ public class MiniNet {
        o.makeFriends();// make 2 people as friends 
        break;
    case 8:
-    System.exit(0);
-    break;
+       System.exit(0);//exit this system
+       break;
    }
   }
  }
