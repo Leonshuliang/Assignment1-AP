@@ -117,7 +117,7 @@ public class Driver{
     showAll();
     break;
    case 2:
-    modifyLogicLogic1();
+    modifyItem();
     break;
    case 3:
     return;
@@ -125,7 +125,7 @@ public class Driver{
   }
  }
  //modify sub operation
- public void modifyLogicLogic1(){
+ public void modifyItem(){
   Menu m=new Menu();//instance of menu
   OptionNoRegex reg=new OptionNoRegex();
   
@@ -136,11 +136,10 @@ public class Driver{
     nameModify();
     break;
    case 2:
-    ageModify();
+    picModify();
     break;
    case 3:
-    genderModify();
-    break;
+	 return;
    case 4:
     picModify();
     break;
@@ -301,9 +300,8 @@ public class Driver{
  public void nameModify(){
 	
   OptionNoRegex reg=new OptionNoRegex();
-  System.out.println("Enter an option:");
-  Scanner sc1=new Scanner(System.in);
   System.out.println("Enter the persons name you want to change:");
+  Scanner sc1=new Scanner(System.in);
   String name1=sc1.nextLine();
   System.out.println("Enter a new name");
   Scanner sc2=new Scanner(System.in);
@@ -321,7 +319,7 @@ public class Driver{
  
  }
  //modify age
- @SuppressWarnings("resource")
+ 
  public void ageModify(){
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter an option:");
@@ -343,7 +341,7 @@ public class Driver{
   }
  }
  //change gender information
- @SuppressWarnings("resource")
+ 
  public void genderModify(){
   OptionNoRegex reg=new OptionNoRegex();
   System.out.println("Enter an option:");
@@ -365,24 +363,26 @@ public class Driver{
   }
  }
  //Modify the picture 
- @SuppressWarnings("resource")
- public void picModify(){
-  System.out.println("Enter an option:");
-  Scanner sc=new Scanner(System.in);
-  String num=sc.nextLine();//num is the menu option
-  int id=Integer.parseInt(num);//num is the menu option
-  System.out.println("Please uplode the picture you want to upload:");
-  String pic=sc.nextLine();
-  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
-  while(it.hasNext()){
-   Adult p=(Adult)it.next();
-   if(id==p.getId()){
-    p.setPic(pic);
-    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
-   }else{
-    System.out.println("Modify Failed,Please try again!");
-   }
-  }
+ 
+ public void picModify()
+ {
+	 OptionNoRegex reg=new OptionNoRegex();
+	  Scanner sc1=new Scanner(System.in);
+	  System.out.println("Enter the persons name you want to change:");
+	  String name1=sc1.nextLine();
+	  System.out.println("Upload a new picture");
+	  Scanner sc2=new Scanner(System.in);
+	  String pic=sc2.nextLine();// new name of this person
+	  //name=reg.nameRegex(name);
+	  Iterator<Adult> it=listAdult.iterator();//ergodic process to check every object in list
+	  while(it.hasNext()){
+	   Adult p=(Adult)it.next();
+	   if(name1.equals(p.getName()))
+	   {
+	    p.setPic(pic);
+	    System.out.println(p.getId()+"#"+"\t\t"+p.getName()+"\t\t"+p.getAge()+"\t\t"+p.getGender()+"\t\t"+p.getPic()+"\t\t"+p.getStatus()+"\t\t"+p.getFriends());
+	   }
+	  }
  }
  //modify the status
  @SuppressWarnings("resource")

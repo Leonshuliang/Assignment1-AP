@@ -36,10 +36,6 @@ public class Menu {
  public void searchMenu () {
   System.out.println("===================================");
   System.out.println("1.Search by name");
-//  System.out.println("2.Search by age");
-//  System.out.println("3.Search by gender");
-//  //System.out.println("4.Search by mobile");
-//  System.out.println("4.Search by status");
   System.out.println("5.List all people");
   System.out.println("6.Return to the previous menu");
   System.out.println("===================================");
@@ -57,11 +53,8 @@ public class Menu {
  public void subModifyMenu () {
   System.out.println("===================================");
   System.out.println("1.Change name");
-//  System.out.println("2.Change age");
-//  System.out.println("3.Change gender");
-//  System.out.println("4.Change pic");
-//  System.out.println("5.Change status");
-  System.out.println("6.Return to the previous menu");
+  System.out.println("2.Change pic");
+  System.out.println("3.Return to the previous menu");
   System.out.println("===================================");
  }
  
